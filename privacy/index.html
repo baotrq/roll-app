@@ -4,98 +4,233 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roll — Privacy Policy</title>
+<meta name="description" content="What the Roll expense tracker reads, stores on your phone, and sends off your device.">
+<link rel="icon" href="../icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #2b2522; --muted: #6f6660; --paper: #fbf8f3; --rule: #e6ded3; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
-  h1 { font-size: 1.8rem; margin: 0 0 4px; }
-  h2 { font-size: 1.2rem; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--rule); }
-  .meta { color: var(--muted); margin: 0 0 24px; }
-  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-  th, td { text-align: left; vertical-align: top; padding: 8px 6px; border-bottom: 1px solid var(--rule); }
-  th { font-weight: 600; }
-  a { color: inherit; }
+  :root {
+    --paper: #F8F0DF; --card: #FFFCF4; --card-alt: #F1E6D0; --sand: #E6D3AC;
+    --ink: #2B2119; --ink-soft: #4A3B2C; --muted: #6F604C;
+    --bow: #E14A2B; --leaf: #6E9B5B; --leaf-deep: #4E7A45; --gold: #E6A33A; --sky: #BFE3E0;
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 500 16.5px/1.65 Nunito, system-ui, sans-serif;
+    background-image: radial-gradient(var(--sand) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 72px; }
+  h1, h2, h3 { font-family: "Baloo 2", Nunito, sans-serif; line-height: 1.15; margin: 0; }
+  h2 { font-size: 1.5rem; font-weight: 800; }
+  h3 { font-size: 1.1rem; font-weight: 600; }
+  p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
+  a { color: var(--bow); font-weight: 700; text-underline-offset: 3px; }
+  code { font-size: .9em; background: var(--card-alt); padding: 1px 6px; border-radius: 6px; }
+
+  .sticker {
+    background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius);
+    box-shadow: 0 4px 0 var(--ink); padding: 22px;
+  }
+  .stack > * + * { margin-top: 20px; }
+
+  /* Hero */
+  .hero { display: flex; gap: 18px; align-items: center; background: var(--card); }
+  .hero img { width: 92px; height: 92px; flex: none; border-radius: 26px; background: var(--card-alt); border: 2.5px solid var(--ink); }
+  .eyebrow { font: 800 .78rem/1 Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--bow); }
+  .hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); font-weight: 800; margin: 6px 0 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: .82rem; font-weight: 700; padding: 3px 11px; border-radius: 999px; background: var(--card-alt); border: 2px solid var(--ink); white-space: nowrap; }
+  .lead { font-size: 1.08rem; color: var(--ink-soft); padding: 4px 6px; }
+
+  /* At a glance */
+  .glance { background: var(--sky); }
+  .glance ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+  .glance li { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 12px 14px; }
+  .tick { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink); display: grid; place-items: center; background: var(--leaf); color: #fff; font-weight: 800; font-size: .9rem; }
+  .tick.warn { background: var(--gold); color: var(--ink); }
+
+  /* Table of contents */
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; padding: 2px; }
+  nav.toc a { color: var(--ink); text-decoration: none; font-size: .88rem; padding: 6px 13px; border-radius: 999px; background: var(--card); border: 2px solid var(--ink); box-shadow: 0 2px 0 var(--ink); }
+  nav.toc a:hover { background: var(--card-alt); }
+
+  /* Sections */
+  section { scroll-margin-top: 16px; }
+  .head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .badge { flex: none; width: 40px; height: 40px; border-radius: 13px; border: 2.5px solid var(--ink); display: grid; place-items: center; font-size: 1.25rem; }
+  .b-leaf { background: #D9E8CF; } .b-gold { background: #F7DFB2; } .b-bow { background: #F7D2C8; } .b-sky { background: var(--sky); } .b-sand { background: var(--card-alt); }
+  .tag { margin-left: auto; font-size: .75rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 2px solid var(--ink); white-space: nowrap; }
+  .tag.local { background: var(--leaf); color: #fff; }
+  .tag.sent { background: var(--gold); }
+  .tag.opt { background: var(--card-alt); }
+
+  .rows { display: grid; gap: 10px; margin-bottom: 14px; }
+  .row { background: var(--paper); border-radius: 14px; padding: 12px 14px; border: 2px solid var(--sand); }
+  .row strong { display: block; font-weight: 800; }
+  .row span { color: var(--ink-soft); font-size: .95rem; }
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0 14px; font-size: .88rem; font-weight: 800; }
+  .flow span { padding: 5px 11px; border-radius: 10px; border: 2px solid var(--ink); background: var(--card-alt); }
+  .flow i { font-style: normal; color: var(--muted); }
+
+  ul.clean { margin: 0; padding-left: 20px; }
+  ul.clean li + li { margin-top: 6px; }
+  .muted { color: var(--muted); }
+
+  .contact { background: var(--ink); color: var(--card); border-color: var(--ink); box-shadow: 0 4px 0 var(--bow); text-align: center; }
+  .contact h2 { color: var(--card); }
+  .contact p { color: var(--sand); }
+  .btn { display: inline-block; margin-top: 8px; background: var(--bow); color: #fff; text-decoration: none; padding: 11px 20px; border-radius: 16px; border: 2.5px solid var(--card); font-weight: 800; }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 28px; }
+
+  @media (max-width: 520px) {
+    .hero { flex-direction: column; align-items: flex-start; }
+    .hero img { width: 76px; height: 76px; }
+    .sticker { padding: 18px; }
+    .head { flex-wrap: wrap; }
+    .head h2 { flex: 1 1 calc(100% - 60px); min-width: 0; font-size: 1.3rem; }
+    .tag { margin-left: 52px; }
+    .flow { flex-direction: column; align-items: flex-start; }
+    .flow i { transform: rotate(90deg); margin-left: 14px; }
+  }
 </style>
 </head>
 <body>
-<main>
-<h1>Roll — Privacy Policy</h1>
-<p class="meta">App: Roll (Android phone and Wear OS), package <code>com.bao.roll</code><br>
-Developer: <strong>baotrq</strong><br>
-Contact: <a href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a><br>
-Last updated: 24 September 2026</p>
+<main class="stack">
 
-<p>Roll is a personal expense tracker. Your ledger lives on your phone. This page explains everything
-Roll reads, stores on your device, and sends off your device, and why.</p>
+  <header class="sticker hero">
+    <img src="../icon.png" alt="Roll app icon: a black cat with a banknote and a red bow">
+    <div>
+      <div class="eyebrow">Roll · Expense tracker</div>
+      <h1>Privacy Policy</h1>
+      <div class="chips">
+        <span class="chip">Updated 24 Sep 2026</span>
+        <span class="chip">Android &amp; Wear OS</span>
+        <span class="chip"><code>com.bao.roll</code></span>
+      </div>
+    </div>
+  </header>
 
-<h2>Summary</h2>
-<ul>
-  <li>No ads, no advertising ID, no analytics or tracking SDKs. We do not sell your data.</li>
-  <li>Your financial records are stored on your phone and are not uploaded unless cloud sync is turned on (not offered to new users in this version).</li>
-  <li>Two optional features send limited data off your device: voice speech recognition (via your phone's speech service) and automatic category suggestions for voice entries (via our server and Google Gemini).</li>
-  <li>Notification access, microphone and camera are optional. You can decline each and still use Roll.</li>
-</ul>
+  <p class="lead">Roll is a personal expense tracker. Your ledger lives on your phone. This page explains everything
+  Roll reads, stores on your device, and sends off your device, and why. Roll is developed by <strong>baotrq</strong>.</p>
 
-<h2>Data stored only on your device</h2>
-<table>
-  <tr><th>Data</th><th>Why</th></tr>
-  <tr><td>Accounts, balances, transactions, transfers, categories, budgets, savings goals, notes</td><td>The core ledger you create.</td></tr>
-  <tr><td>Receipt photos (camera or photo picker)</td><td>Attached to an entry you choose. Roll uses the system photo picker and does not request broad storage access.</td></tr>
-  <tr><td>Payment notifications you haven't reviewed yet</td><td>If you grant notification access, supported bank/wallet alerts are parsed into a draft entry (amount, merchant, alert text) and kept until you confirm or dismiss it.</td></tr>
-  <tr><td>Names and icons of installed apps</td><td>Shown in the account icon picker so you can pick a bank app's icon. Processed on the device only.</td></tr>
-  <tr><td>Settings, pet/game progress, language</td><td>App preferences.</td></tr>
-</table>
-<p>This data is deleted when you delete it in the app, clear Roll's storage, or uninstall Roll.
-Android cloud backup is disabled for Roll. If you use <em>Backup</em> or <em>Export CSV</em>, Roll creates a file and
-hands it to the Android share sheet; where it goes after that is your choice.</p>
+  <section class="sticker glance" id="summary">
+    <h2>At a glance</h2>
+    <ul>
+      <li><span class="tick">✓</span><span>No ads, no advertising ID, no analytics or tracking SDKs. We do not sell your data.</span></li>
+      <li><span class="tick">✓</span><span>Your financial records are stored on your phone and are not uploaded unless cloud sync is turned on (not offered to new users in this version).</span></li>
+      <li><span class="tick warn">!</span><span>Two optional features send limited data off your device: voice speech recognition (via your phone's speech service) and automatic category suggestions for voice entries (via our server and Google Gemini).</span></li>
+      <li><span class="tick">✓</span><span>Notification access, microphone and camera are optional. You can decline each and still use Roll.</span></li>
+    </ul>
+  </section>
 
-<h2>Notification access (optional)</h2>
-<p>If you turn it on, Android lets Roll read the app name, title and text of notifications you receive. Roll uses this
-only to detect supported bank and wallet payment alerts and prepare an entry for you to review. Notifications from
-other apps, and alerts Roll does not recognise, are ignored and not stored. Notification content is processed on your
-device and is not sent to us. You can turn access off at any time in Android settings.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#device">On your device</a>
+    <a href="#notifications">Notifications</a>
+    <a href="#voice">Microphone</a>
+    <a href="#categories">Category suggestions</a>
+    <a href="#wear">Wear OS</a>
+    <a href="#sync">Cloud sync</a>
+    <a href="#security">Security</a>
+    <a href="#choices">Your choices</a>
+  </nav>
 
-<h2>Microphone and speech recognition (optional)</h2>
-<p>Roll listens only while the voice-logging sheet is open. Speech is converted to text by the speech recognition service
-on your phone (for example Google's). Roll uses the on-device recogniser when available; otherwise your phone's
-speech service may process the audio over the internet under that provider's own privacy policy. Roll does not record,
-store or upload audio itself.</p>
+  <section class="sticker" id="device">
+    <div class="head"><span class="badge b-leaf" aria-hidden="true">📱</span><h2>Data stored only on your device</h2><span class="tag local">Stays on phone</span></div>
+    <div class="rows">
+      <div class="row"><strong>Accounts, balances, transactions, transfers, categories, budgets, savings goals, notes</strong><span>The core ledger you create.</span></div>
+      <div class="row"><strong>Receipt photos (camera or photo picker)</strong><span>Attached to an entry you choose. Roll uses the system photo picker and does not request broad storage access.</span></div>
+      <div class="row"><strong>Payment notifications you haven't reviewed yet</strong><span>If you grant notification access, supported bank/wallet alerts are parsed into a draft entry (amount, merchant, alert text) and kept until you confirm or dismiss it.</span></div>
+      <div class="row"><strong>Names and icons of installed apps</strong><span>Shown in the account icon picker so you can pick a bank app's icon. Processed on the device only.</span></div>
+      <div class="row"><strong>Settings, pet/game progress, language</strong><span>App preferences.</span></div>
+    </div>
+    <p>This data is deleted when you delete it in the app, clear Roll's storage, or uninstall Roll.
+    Android cloud backup is disabled for Roll. If you use <em>Backup</em> or <em>Export CSV</em>, Roll creates a file and
+    hands it to the Android share sheet; where it goes after that is your choice.</p>
+  </section>
 
-<h2>Automatic category suggestions</h2>
-<p>After a voice entry, Roll first tries to match a category on your phone. If it can't, it sends the entry's text note
-(for example "lunch"), whether it is income or expense, and your category names and IDs over HTTPS to Roll's server
-function hosted on Supabase, which asks Google's Gemini API to pick the best category. The amount, account, audio and
-your identity are not sent. We do not store the content of these requests. To prevent abuse, the server
-counts requests per IP address; that count and the IP address are deleted automatically within about 2 hours. Supabase and Google process them as service providers
-under their own terms, and may keep operational logs for a limited time. If you'd rather not use this, log entries with
-the keypad or camera instead.</p>
+  <section class="sticker" id="notifications">
+    <div class="head"><span class="badge b-bow" aria-hidden="true">🔔</span><h2>Notification access</h2><span class="tag opt">Optional</span></div>
+    <p>If you turn it on, Android lets Roll read the app name, title and text of notifications you receive. Roll uses this
+    only to detect supported bank and wallet payment alerts and prepare an entry for you to review. Notifications from
+    other apps, and alerts Roll does not recognise, are ignored and not stored. Notification content is processed on your
+    device and is not sent to us. You can turn access off at any time in Android settings.</p>
+  </section>
 
-<h2>Wear OS companion</h2>
-<p>If you pair the Wear OS app, entries and pending captures move between your phone and watch through Google Play
-services' Wear data layer. They are not sent to us.</p>
+  <section class="sticker" id="voice">
+    <div class="head"><span class="badge b-gold" aria-hidden="true">🎙️</span><h2>Microphone &amp; speech recognition</h2><span class="tag opt">Optional</span></div>
+    <p>Roll listens only while the voice-logging sheet is open. Speech is converted to text by the speech recognition service
+    on your phone (for example Google's). Roll uses the on-device recogniser when available; otherwise your phone's
+    speech service may process the audio over the internet under that provider's own privacy policy. Roll does not record,
+    store or upload audio itself.</p>
+  </section>
 
-<h2>Cloud sync (not available to new users)</h2>
-<p>Roll contains an optional sync feature that is not offered to new users in this version. If it is enabled for an
-account, the ledger (accounts, transactions, categories, budgets) and custom account images are uploaded over HTTPS to
-a Supabase database and storage, together with the account's email address and user ID. This policy will be updated,
-including how to delete an account and its cloud data, before sync is offered publicly.</p>
+  <section class="sticker" id="categories">
+    <div class="head"><span class="badge b-gold" aria-hidden="true">🏷️</span><h2>Automatic category suggestions</h2><span class="tag sent">Leaves phone</span></div>
+    <div class="flow" aria-label="Data flow">
+      <span>Note text + category names</span><i>→</i><span>Roll server (Supabase)</span><i>→</i><span>Google Gemini</span>
+    </div>
+    <p>After a voice entry, Roll first tries to match a category on your phone. If it can't, it sends the entry's text note
+    (for example "lunch"), whether it is income or expense, and your category names and IDs over HTTPS to Roll's server
+    function hosted on Supabase, which asks Google's Gemini API to pick the best category. The amount, account, audio and
+    your identity are not sent.</p>
+    <p>We do not store the content of these requests. To prevent abuse, the server counts requests per IP address; that
+    count and the IP address are deleted automatically within about 2 hours. Supabase and Google process them as service
+    providers under their own terms, and may keep operational logs for a limited time. If you'd rather not use this, log
+    entries with the keypad or camera instead.</p>
+  </section>
 
-<h2>Security</h2>
-<p>All network traffic uses HTTPS. An optional fingerprint lock protects the app on your device. Roll does not
-request location, contacts, SMS, call logs or accessibility access.</p>
+  <section class="sticker" id="wear">
+    <div class="head"><span class="badge b-sky" aria-hidden="true">⌚</span><h2>Wear OS companion</h2></div>
+    <p>If you pair the Wear OS app, entries and pending captures move between your phone and watch through Google Play
+    services' Wear data layer. They are not sent to us.</p>
+  </section>
 
-<h2>Children</h2>
-<p>Roll is a personal finance app intended for adults and is not directed at children.</p>
+  <section class="sticker" id="sync">
+    <div class="head"><span class="badge b-sand" aria-hidden="true">☁️</span><h2>Cloud sync</h2><span class="tag opt">Not available to new users</span></div>
+    <p>Roll contains an optional sync feature that is not offered to new users in this version. If it is enabled for an
+    account, the ledger (accounts, transactions, categories, budgets) and custom account images are uploaded over HTTPS to
+    a Supabase database and storage, together with the account's email address and user ID. This policy will be updated,
+    including how to delete an account and its cloud data, before sync is offered publicly.</p>
+  </section>
 
-<h2>Your choices and deletion</h2>
-<ul>
-  <li>Decline or revoke notification, microphone and camera permissions at any time in Android settings.</li>
-  <li>Delete any entry or photo inside Roll; uninstalling Roll removes all on-device data.</li>
-  <li>For questions or requests, email <a href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a>.</li>
-</ul>
+  <section class="sticker" id="security">
+    <div class="head"><span class="badge b-leaf" aria-hidden="true">🔒</span><h2>Security</h2></div>
+    <p>All network traffic uses HTTPS. An optional fingerprint lock protects the app on your device. Roll does not
+    request location, contacts, SMS, call logs or accessibility access.</p>
+  </section>
 
-<h2>Changes</h2>
-<p>We will update this page when Roll's data handling changes and change the date above.</p>
+  <section class="sticker" id="children">
+    <div class="head"><span class="badge b-sand" aria-hidden="true">🔞</span><h2>Children</h2></div>
+    <p>Roll is a personal finance app intended for adults and is not directed at children.</p>
+  </section>
+
+  <section class="sticker" id="choices">
+    <div class="head"><span class="badge b-bow" aria-hidden="true">🗑️</span><h2>Your choices &amp; deletion</h2></div>
+    <ul class="clean">
+      <li>Decline or revoke notification, microphone and camera permissions at any time in Android settings.</li>
+      <li>Delete any entry or photo inside Roll; uninstalling Roll removes all on-device data.</li>
+      <li>For questions or requests, email <a href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a>.</li>
+    </ul>
+  </section>
+
+  <section class="sticker" id="changes">
+    <div class="head"><span class="badge b-sky" aria-hidden="true">📝</span><h2>Changes</h2></div>
+    <p>We will update this page when Roll's data handling changes and change the date above.</p>
+  </section>
+
+  <section class="sticker contact">
+    <h2>Questions?</h2>
+    <p>Developer: baotrq</p>
+    <a class="btn" href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a>
+  </section>
+
+  <footer>Roll · <code>com.bao.roll</code> · Last updated 24 September 2026</footer>
 </main>
 </body>
 </html>
