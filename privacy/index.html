@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roll — Privacy Policy</title>
+<style>
+  :root { --ink: #2b2522; --muted: #6f6660; --paper: #fbf8f3; --rule: #e6ded3; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.8rem; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--rule); }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 6px; border-bottom: 1px solid var(--rule); }
+  th { font-weight: 600; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+<h1>Roll — Privacy Policy</h1>
+<p class="meta">App: Roll (Android phone and Wear OS), package <code>com.bao.roll</code><br>
+Developer: <strong>baotrq</strong><br>
+Contact: <a href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a><br>
+Last updated: 24 September 2026</p>
+
+<p>Roll is a personal expense tracker. Your ledger lives on your phone. This page explains everything
+Roll reads, stores on your device, and sends off your device, and why.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li>No ads, no advertising ID, no analytics or tracking SDKs. We do not sell your data.</li>
+  <li>Your financial records are stored on your phone and are not uploaded unless cloud sync is turned on (not offered to new users in this version).</li>
+  <li>Two optional features send limited data off your device: voice speech recognition (via your phone's speech service) and automatic category suggestions for voice entries (via our server and Google Gemini).</li>
+  <li>Notification access, microphone and camera are optional. You can decline each and still use Roll.</li>
+</ul>
+
+<h2>Data stored only on your device</h2>
+<table>
+  <tr><th>Data</th><th>Why</th></tr>
+  <tr><td>Accounts, balances, transactions, transfers, categories, budgets, savings goals, notes</td><td>The core ledger you create.</td></tr>
+  <tr><td>Receipt photos (camera or photo picker)</td><td>Attached to an entry you choose. Roll uses the system photo picker and does not request broad storage access.</td></tr>
+  <tr><td>Payment notifications you haven't reviewed yet</td><td>If you grant notification access, supported bank/wallet alerts are parsed into a draft entry (amount, merchant, alert text) and kept until you confirm or dismiss it.</td></tr>
+  <tr><td>Names and icons of installed apps</td><td>Shown in the account icon picker so you can pick a bank app's icon. Processed on the device only.</td></tr>
+  <tr><td>Settings, pet/game progress, language</td><td>App preferences.</td></tr>
+</table>
+<p>This data is deleted when you delete it in the app, clear Roll's storage, or uninstall Roll.
+Android cloud backup is disabled for Roll. If you use <em>Backup</em> or <em>Export CSV</em>, Roll creates a file and
+hands it to the Android share sheet; where it goes after that is your choice.</p>
+
+<h2>Notification access (optional)</h2>
+<p>If you turn it on, Android lets Roll read the app name, title and text of notifications you receive. Roll uses this
+only to detect supported bank and wallet payment alerts and prepare an entry for you to review. Notifications from
+other apps, and alerts Roll does not recognise, are ignored and not stored. Notification content is processed on your
+device and is not sent to us. You can turn access off at any time in Android settings.</p>
+
+<h2>Microphone and speech recognition (optional)</h2>
+<p>Roll listens only while the voice-logging sheet is open. Speech is converted to text by the speech recognition service
+on your phone (for example Google's). Roll uses the on-device recogniser when available; otherwise your phone's
+speech service may process the audio over the internet under that provider's own privacy policy. Roll does not record,
+store or upload audio itself.</p>
+
+<h2>Automatic category suggestions</h2>
+<p>After a voice entry, Roll first tries to match a category on your phone. If it can't, it sends the entry's text note
+(for example "lunch"), whether it is income or expense, and your category names and IDs over HTTPS to Roll's server
+function hosted on Supabase, which asks Google's Gemini API to pick the best category. The amount, account, audio and
+your identity are not sent. We do not store the content of these requests. To prevent abuse, the server
+counts requests per IP address; that count and the IP address are deleted automatically within about 2 hours. Supabase and Google process them as service providers
+under their own terms, and may keep operational logs for a limited time. If you'd rather not use this, log entries with
+the keypad or camera instead.</p>
+
+<h2>Wear OS companion</h2>
+<p>If you pair the Wear OS app, entries and pending captures move between your phone and watch through Google Play
+services' Wear data layer. They are not sent to us.</p>
+
+<h2>Cloud sync (not available to new users)</h2>
+<p>Roll contains an optional sync feature that is not offered to new users in this version. If it is enabled for an
+account, the ledger (accounts, transactions, categories, budgets) and custom account images are uploaded over HTTPS to
+a Supabase database and storage, together with the account's email address and user ID. This policy will be updated,
+including how to delete an account and its cloud data, before sync is offered publicly.</p>
+
+<h2>Security</h2>
+<p>All network traffic uses HTTPS. An optional fingerprint lock protects the app on your device. Roll does not
+request location, contacts, SMS, call logs or accessibility access.</p>
+
+<h2>Children</h2>
+<p>Roll is a personal finance app intended for adults and is not directed at children.</p>
+
+<h2>Your choices and deletion</h2>
+<ul>
+  <li>Decline or revoke notification, microphone and camera permissions at any time in Android settings.</li>
+  <li>Delete any entry or photo inside Roll; uninstalling Roll removes all on-device data.</li>
+  <li>For questions or requests, email <a href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a>.</li>
+</ul>
+
+<h2>Changes</h2>
+<p>We will update this page when Roll's data handling changes and change the date above.</p>
+</main>
+</body>
+</html>
