@@ -109,7 +109,7 @@
       <div class="eyebrow">Roll · Expense tracker</div>
       <h1>Privacy Policy</h1>
       <div class="chips">
-        <span class="chip">Updated 24 Sep 2026</span>
+        <span class="chip">Updated 7 Oct 2026</span>
         <span class="chip">Android &amp; Wear OS</span>
         <span class="chip"><code>com.bao.roll</code></span>
       </div>
@@ -123,8 +123,9 @@
     <h2>At a glance</h2>
     <ul>
       <li><span class="tick">✓</span><span>No ads, no advertising ID, no analytics or tracking SDKs. We do not sell your data.</span></li>
-      <li><span class="tick">✓</span><span>Your financial records are stored on your phone and are not uploaded unless cloud sync is turned on (not offered to new users in this version).</span></li>
-      <li><span class="tick warn">!</span><span>Two optional features send limited data off your device: voice speech recognition (via your phone's speech service) and automatic category suggestions for voice entries (via our server and Google Gemini).</span></li>
+      <li><span class="tick">✓</span><span>Your financial records are stored on your phone. They are uploaded only if you sign in and have Roll Pro, which backs your ledger and receipt photos up to our server so you can use Roll on more than one phone.</span></li>
+      <li><span class="tick">✓</span><span>You can delete your account, and everything stored with it on our server, from inside the app at any time.</span></li>
+      <li><span class="tick warn">!</span><span>Some optional features send data off your device, each explained below: an account and Roll Pro's cloud backup (our server), purchases (Google Play and RevenueCat), voice speech recognition (your phone's speech service), category suggestions for voice entries (our server and Google Gemini), and exchange rates for other currencies (ExchangeRate-API).</span></li>
       <li><span class="tick">✓</span><span>Notification access, microphone and camera are optional. You can decline each and still use Roll.</span></li>
     </ul>
   </section>
@@ -192,11 +193,32 @@
   </section>
 
   <section class="sticker" id="sync">
-    <div class="head"><span class="badge b-sand" aria-hidden="true">☁️</span><h2>Cloud sync</h2><span class="tag opt">Not available to new users</span></div>
-    <p>Roll contains an optional sync feature that is not offered to new users in this version. If it is enabled for an
-    account, the ledger (accounts, transactions, categories, budgets) and custom account images are uploaded over HTTPS to
-    a Supabase database and storage, together with the account's email address and user ID. This policy will be updated,
-    including how to delete an account and its cloud data, before sync is offered publicly.</p>
+    <div class="head"><span class="badge b-sand" aria-hidden="true">☁️</span><h2>Accounts, Roll Pro &amp; cloud backup</h2><span class="tag sent">Optional · leaves phone</span></div>
+    <p>An account is optional; Roll works fully without one. If you create one, we store your email address, a user ID and
+    (if you sign up with email) a password, which our authentication provider keeps only as a secure hash. If you sign in
+    with Google, Google tells us your email address and name. To confirm a new email address or reset a password we email
+    you a one-time code. You can also choose your language for these emails, which we keep with your account.</p>
+    <p>With Roll Pro, Roll uploads over HTTPS and keeps on our server: your accounts and jars, transactions (amounts,
+    currencies, notes, dates, categories), categories, budgets, people you split with and what you owe each other,
+    repayment plans, custom jar images, your home currency, and your receipt photos and short receipt videos. Receipt
+    photos upload only on Wi-Fi. Photos of people you add, your cat and game progress stay on your phone. Without Pro,
+    nothing from your ledger is uploaded even when you are signed in.</p>
+    <p>This data is stored with Supabase (our database, file storage and sign-in provider) in Singapore and is visible only
+    to your account. It is kept until you delete it in the app or delete your account.</p>
+  </section>
+
+  <section class="sticker" id="purchases">
+    <div class="head"><span class="badge b-gold" aria-hidden="true">💳</span><h2>Purchases</h2><span class="tag sent">Leaves phone</span></div>
+    <p>Roll Pro is sold through Google Play. Google handles payment; we never see your card or payment details. We use
+    RevenueCat to check purchases: it receives your Roll user ID and your Google Play purchase records (product, price,
+    dates, renewal and cancellation status), and tells our server whether your account has Pro.</p>
+  </section>
+
+  <section class="sticker" id="rates">
+    <div class="head"><span class="badge b-sky" aria-hidden="true">💱</span><h2>Exchange rates</h2><span class="tag sent">Leaves phone</span></div>
+    <p>When you log an amount in another currency, Roll fetches the current exchange rate from ExchangeRate-API
+    (open.er-api.com). The request contains only the currency code; like any web request it reveals your IP address to
+    that service. No amounts or notes are sent.</p>
   </section>
 
   <section class="sticker" id="security">
@@ -214,7 +236,11 @@
     <div class="head"><span class="badge b-bow" aria-hidden="true">🗑️</span><h2>Your choices &amp; deletion</h2></div>
     <ul class="clean">
       <li>Decline or revoke notification, microphone and camera permissions at any time in Android settings.</li>
-      <li>Delete any entry or photo inside Roll; uninstalling Roll removes all on-device data.</li>
+      <li>Delete any entry or photo inside Roll; it is also removed from our server on the next sync. Uninstalling Roll removes all on-device data.</li>
+      <li>Delete your account in Roll › Profile &amp; sync › Delete account. This removes your account and everything stored
+      with it on our server — ledger, people, plans, receipt photos and videos — straight away; copies in our provider's
+      backups expire within 30 days. A Google Play subscription is not cancelled by this: cancel it in Google Play.
+      You can also <a href="../delete-account/">ask us to delete your account</a> without the app.</li>
       <li>For questions or requests, email <a href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a>.</li>
     </ul>
   </section>
@@ -230,7 +256,7 @@
     <a class="btn" href="mailto:tdmbao2005@gmail.com">tdmbao2005@gmail.com</a>
   </section>
 
-  <footer>Roll · <code>com.bao.roll</code> · Last updated 24 September 2026</footer>
+  <footer>Roll · <code>com.bao.roll</code> · Last updated 7 October 2026</footer>
 </main>
 </body>
 </html>

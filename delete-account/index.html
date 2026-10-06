@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roll — Delete your account</title>
+<meta name="description" content="How to delete your Roll account and the data stored with it.">
+<link rel="icon" href="../icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F8F0DF; --card: #FFFCF4; --card-alt: #F1E6D0; --sand: #E6D3AC;
+    --ink: #2B2119; --ink-soft: #4A3B2C; --muted: #6F604C;
+    --bow: #E14A2B; --leaf: #6E9B5B; --leaf-deep: #4E7A45; --gold: #E6A33A; --sky: #BFE3E0;
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 500 16.5px/1.65 Nunito, system-ui, sans-serif;
+    background-image: radial-gradient(var(--sand) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 72px; }
+  h1, h2, h3 { font-family: "Baloo 2", Nunito, sans-serif; line-height: 1.15; margin: 0; }
+  h2 { font-size: 1.5rem; font-weight: 800; }
+  h3 { font-size: 1.1rem; font-weight: 600; }
+  p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
+  a { color: var(--bow); font-weight: 700; text-underline-offset: 3px; }
+  code { font-size: .9em; background: var(--card-alt); padding: 1px 6px; border-radius: 6px; }
+
+  .sticker {
+    background: var(--card); border: 2.5px solid var(--ink); border-radius: var(--radius);
+    box-shadow: 0 4px 0 var(--ink); padding: 22px;
+  }
+  .stack > * + * { margin-top: 20px; }
+
+  /* Hero */
+  .hero { display: flex; gap: 18px; align-items: center; background: var(--card); }
+  .hero img { width: 92px; height: 92px; flex: none; border-radius: 26px; background: var(--card-alt); border: 2.5px solid var(--ink); }
+  .eyebrow { font: 800 .78rem/1 Nunito, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--bow); }
+  .hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); font-weight: 800; margin: 6px 0 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: .82rem; font-weight: 700; padding: 3px 11px; border-radius: 999px; background: var(--card-alt); border: 2px solid var(--ink); white-space: nowrap; }
+  .lead { font-size: 1.08rem; color: var(--ink-soft); padding: 4px 6px; }
+
+  /* At a glance */
+  .glance { background: var(--sky); }
+  .glance ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+  .glance li { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 12px 14px; }
+  .tick { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink); display: grid; place-items: center; background: var(--leaf); color: #fff; font-weight: 800; font-size: .9rem; }
+  .tick.warn { background: var(--gold); color: var(--ink); }
+
+  /* Table of contents */
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; padding: 2px; }
+  nav.toc a { color: var(--ink); text-decoration: none; font-size: .88rem; padding: 6px 13px; border-radius: 999px; background: var(--card); border: 2px solid var(--ink); box-shadow: 0 2px 0 var(--ink); }
+  nav.toc a:hover { background: var(--card-alt); }
+
+  /* Sections */
+  section { scroll-margin-top: 16px; }
+  .head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .badge { flex: none; width: 40px; height: 40px; border-radius: 13px; border: 2.5px solid var(--ink); display: grid; place-items: center; font-size: 1.25rem; }
+  .b-leaf { background: #D9E8CF; } .b-gold { background: #F7DFB2; } .b-bow { background: #F7D2C8; } .b-sky { background: var(--sky); } .b-sand { background: var(--card-alt); }
+  .tag { margin-left: auto; font-size: .75rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 2px solid var(--ink); white-space: nowrap; }
+  .tag.local { background: var(--leaf); color: #fff; }
+  .tag.sent { background: var(--gold); }
+  .tag.opt { background: var(--card-alt); }
+
+  .rows { display: grid; gap: 10px; margin-bottom: 14px; }
+  .row { background: var(--paper); border-radius: 14px; padding: 12px 14px; border: 2px solid var(--sand); }
+  .row strong { display: block; font-weight: 800; }
+  .row span { color: var(--ink-soft); font-size: .95rem; }
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0 14px; font-size: .88rem; font-weight: 800; }
+  .flow span { padding: 5px 11px; border-radius: 10px; border: 2px solid var(--ink); background: var(--card-alt); }
+  .flow i { font-style: normal; color: var(--muted); }
+
+  ul.clean { margin: 0; padding-left: 20px; }
+  ul.clean li + li { margin-top: 6px; }
+  .muted { color: var(--muted); }
+
+  .contact { background: var(--ink); color: var(--card); border-color: var(--ink); box-shadow: 0 4px 0 var(--bow); text-align: center; }
+  .contact h2 { color: var(--card); }
+  .contact p { color: var(--sand); }
+  .btn { display: inline-block; margin-top: 8px; background: var(--bow); color: #fff; text-decoration: none; padding: 11px 20px; border-radius: 16px; border: 2.5px solid var(--card); font-weight: 800; }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 28px; }
+
+  @media (max-width: 520px) {
+    .hero { flex-direction: column; align-items: flex-start; }
+    .hero img { width: 76px; height: 76px; }
+    .sticker { padding: 18px; }
+    .head { flex-wrap: wrap; }
+    .head h2 { flex: 1 1 calc(100% - 60px); min-width: 0; font-size: 1.3rem; }
+    .tag { margin-left: 52px; }
+    .flow { flex-direction: column; align-items: flex-start; }
+    .flow i { transform: rotate(90deg); margin-left: 14px; }
+  }
+</style>
+</head>
+<body>
+<main class="stack">
+
+  <header class="sticker hero">
+    <img src="../icon.png" alt="Roll app icon: a black cat with a banknote and a red bow">
+    <div>
+      <div class="eyebrow">Roll · Expense tracker</div>
+      <h1>Delete your account</h1>
+      <div class="chips">
+        <span class="chip">Updated 7 Oct 2026</span>
+        <span class="chip"><code>com.bao.roll</code></span>
+      </div>
+    </div>
+  </header>
+
+  <p class="lead">Roll is developed by <strong>baotrq</strong>. You can delete your Roll account, and everything stored with it on
+  our server, at any time.</p>
+
+  <section class="sticker" id="in-app">
+    <div class="head"><span class="badge b-bow" aria-hidden="true">🗑️</span><h2>In the app</h2></div>
+    <ul class="clean">
+      <li>Open Roll and tap your name at the top of the Yard to open <strong>Profile &amp; sync</strong>.</li>
+      <li>Tap <strong>Delete account</strong>, then <strong>Delete</strong>.</li>
+    </ul>
+    <p>Your account is deleted straight away. The ledger on that phone stays on the phone until you uninstall Roll.</p>
+  </section>
+
+  <section class="sticker" id="by-email">
+    <div class="head"><span class="badge b-sky" aria-hidden="true">✉️</span><h2>Without the app</h2></div>
+    <p>Email <a href="mailto:tdmbao2005@gmail.com?subject=Delete%20my%20Roll%20account">tdmbao2005@gmail.com</a> from the
+    address you signed up with, with the subject “Delete my Roll account”. We delete the account within 7 days and reply
+    to confirm.</p>
+  </section>
+
+  <section class="sticker" id="what">
+    <div class="head"><span class="badge b-sand" aria-hidden="true">📦</span><h2>What is deleted</h2></div>
+    <ul class="clean">
+      <li>Your account: email address, sign-in details, language and home currency.</li>
+      <li>Everything backed up with it: jars, transactions, categories, budgets, people and debts, repayment plans,
+      jar images, receipt photos and receipt videos.</li>
+      <li>Your Roll Pro record on our server.</li>
+    </ul>
+    <p>Nothing is kept, except copies inside our provider's backups, which expire within 30 days. Records of purchases
+    stay with Google Play and RevenueCat as their own policies require. Deleting your account does not cancel a
+    Google Play subscription: cancel it in Google Play › Payments &amp; subscriptions.</p>
+  </section>
+
+  <footer>Roll · <code>com.bao.roll</code> · <a href="../privacy/">Privacy policy</a></footer>
+</main>
+</body>
+</html>
